@@ -1,3 +1,5 @@
+MAX_LINES = 5
+
 def deposite():
     while True:
         amount = input("What would like to deposite? $ ")
@@ -8,7 +10,25 @@ def deposite():
             else:
                 print("Amount must be greater than 0")
         else:
-            print("Please enter a number : ")
+            print("Please enter a number.")
     return amount
 
-deposite()
+def get_number_of_lines():
+    while True:
+        lines = input("Enter the number of lines to bet on (1-" + str(MAX_LINES) + ")? ")
+        if lines.isdigit():
+            lines = int(lines)
+            if 1 <= lines <= MAX_LINES:
+                break
+            else:
+                print("Enter a vaild number of lines.")
+        else:
+            print("Please enter a number.")
+    return lines
+
+def main():
+    balance = deposite()
+    lines = get_number_of_lines()
+    print(balance,lines)
+
+main()
